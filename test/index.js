@@ -834,19 +834,5 @@ describe('wallet', () => {
     });
   });
 
-  describe('exportPrivateKeys', () => {
-    it('works', () => {
-      const csv = readOnlyWallet.exportPrivateKeys();
-      assert.strictEqual(typeof csv, 'string');
-    });
-
-    it('errors on missing unspent address', () => {
-      const myWallet = Wallet.deserialize(JSON.stringify(fixtures));
-      myWallet.unspents.push('missing_address');
-      assert.throws(() => {
-        myWallet.exportPrivateKeys();
-      }, /Unknown address. Make sure the address is from the keychain and has been generated./);
-    });
-  });
 
 });
